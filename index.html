@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Ère de l'IA Autonome : Synthèse & Benchmarks</title>
+    <title>Benchmarks IA : Workflows, Agents & Design</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -46,13 +46,6 @@
             background-image: linear-gradient(to right, #a855f7, #06b6d4);
         }
 
-        .text-gradient-secondary {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #ec4899, #f43f5e);
-        }
-
         .flow-box {
             background: linear-gradient(135deg, #1e1b4b, #312e81);
             border: 1px solid #6366f1;
@@ -74,10 +67,55 @@
             margin: 0.5rem;
         }
 
+        .code-block {
+            font-family: monospace;
+            background: #18181b;
+            color: #a855f7;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #7e22ce;
+            white-space: pre-wrap;
+            font-size: 0.875rem;
+        }
+
+        .link-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            transition: all 0.2s;
+            text-decoration: none;
+            margin-bottom: 0.25rem;
+        }
+
+        .link-badge:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.5);
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
             .flow-arrow {
                 transform: rotate(90deg);
             }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.5);
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -87,258 +125,449 @@
     <div class="sr-only" id="meta-data">
         Meta-informations techniques :
         1. Palette choisie : Cyberpunk Neon (Vibrant Dark Mode avec Violet #a855f7, Cyan #06b6d4, Rose #ec4899).
-        2. Plan Narratif : Intro (Paradigm Shift) -> Dev (Agent Coding) -> Autonomie (OpenClaw) -> Design/Video
-        (Workflow).
-        3. Choix Visualisations :
-        - Radar Chart (Comparer Vibe vs Agent Coding - Multi-axes qualitatifs).
-        - Doughnut Chart (Composition d'une équipe Swarm OpenClaw - Proportions).
-        - Bar Chart (Top Modèles Vidéo/Image - Classement performanciel).
-        - Diagramme HTML/CSS (Workflow Vidéo - Processus séquentiel sans SVG).
-        4. Confirmation : AUCUN MERMAID JS ET AUCUN SVG N'ONT ÉTÉ UTILISÉS DANS CE FICHIER.
+        2. Plan Narratif : Intro (JSON Prompting & OpenClaw) -> Dev (Skills, Workflows, CLI) -> Marketing (Gems, Deep
+        Research) -> Design (Stitch, Prompts Complets) -> Vidéo (Outils, ROAS, Motion).
+        3. Choix Visualisations : Radar Chart (Vibe vs Agent Coding), Bar Chart (Modèles Vidéo/Image), Flow Diagram
+        HTML.
+        4. Confirmation : AUCUN MERMAID JS ET AUCUN SVG N'ONT ÉTÉ UTILISÉS DANS CE FICHIER. TOUS LES COMMENTAIRES ONT
+        ÉTÉ SUPPRIMÉS.
     </div>
 
     <nav class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="font-bold text-xl tracking-tight text-white">IA <span class="text-violet-500">Benchmarks</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
-                <a href="#dev" class="hover:text-cyan-400 transition-colors">Développement</a>
-                <a href="#openclaw" class="hover:text-violet-400 transition-colors">Agents Autonomes</a>
-                <a href="#design" class="hover:text-pink-400 transition-colors">Design & Vidéo</a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
+                <a href="#intro" class="hover:text-cyan-400 transition-colors">Intro</a>
+                <a href="#dev" class="hover:text-cyan-400 transition-colors">Dev & Agents</a>
+                <a href="#gems" class="hover:text-violet-400 transition-colors">Gems & Marketing</a>
+                <a href="#design" class="hover:text-pink-400 transition-colors">Web Design</a>
+                <a href="#video" class="hover:text-rose-400 transition-colors">Vidéo & Motion</a>
             </div>
         </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
+    <header id="intro" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <div
             class="inline-block px-4 py-1 mb-6 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-sm font-semibold tracking-wide">
-            RAPPORT DE VEILLE TECHNOLOGIQUE
+            PARTAGE DE CONNAISSANCES
         </div>
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
-            L'Ère de <span class="text-gradient-primary">l'IA Autonome</span>
+            L'Importance de <span class="text-gradient-primary">bien guider les IA</span>
         </h1>
-        <p class="mt-4 max-w-2xl text-lg md:text-xl text-slate-400 mx-auto leading-relaxed">
-            Nous ne sommes plus au stade du simple prompt. L'industrie bascule vers les workflows complexes, les agents
-            proactifs (Gems, OpenClaw) et le design "AI-First". Découvrez les chiffres et outils qui redéfinissent la
-            productivité.
+        <p class="mt-4 max-w-3xl text-lg md:text-xl text-slate-400 mx-auto leading-relaxed">
+            On observe une avancée majeure dans les workflows et les agents IA. On passe d'une IA qui y va "au talent" à
+            une IA qui sait ce qu'elle fait, avec les bonnes compétences, et suit un plan de A à Z (via le JSON
+            prompting, les skills, les gems).
         </p>
-
-        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div class="bento-card flex flex-col items-center justify-center text-center">
-                <div class="text-4xl mb-2">🚀</div>
-                <div class="text-3xl font-bold text-white mb-1">300x</div>
-                <div class="text-sm text-slate-400">Gain de performance estimé via l'Agent Coding contextualisé</div>
-            </div>
-            <div class="bento-card flex flex-col items-center justify-center text-center">
-                <div class="text-4xl mb-2">⚙️</div>
-                <div class="text-3xl font-bold text-cyan-400 mb-1">24/7</div>
-                <div class="text-sm text-slate-400">Autonomie des agents OpenClaw en arrière-plan</div>
-            </div>
-            <div class="bento-card flex flex-col items-center justify-center text-center">
-                <div class="text-4xl mb-2">🎨</div>
-                <div class="text-3xl font-bold text-pink-400 mb-1">100%</div>
-                <div class="text-sm text-slate-400">Campagnes Ads & UGC générées de A à Z par l'IA</div>
-            </div>
+        <div class="mt-8">
+            <a href="https://chatlyai.app/blog/json-prompting-guide" target="_blank"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white rounded-lg font-medium transition-colors shadow-lg shadow-violet-500/20">
+                📖 Explication sur le JSON Prompting
+            </a>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
 
         <section id="dev" class="scroll-mt-24">
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Du "Vibe Coding" à <span
-                        class="text-cyan-400">l'Agent Coding</span></h2>
-                <p class="text-slate-400 text-lg max-w-3xl leading-relaxed">
-                    Le développement logiciel par IA a franchi un cap majeur. Les IDE modernes (Antigravity, Cursor) et
-                    les interfaces en ligne de commande (Claude Code, Gemini CLI) intègrent désormais le Model Context
-                    Protocol (MCP), des "Skills" spécifiques (Debugger, Architect, UX/UI) et des "Work Trees". L'IA
-                    n'improvise plus : elle suit des workflows précis, délègue à des sous-agents et maîtrise le contexte
-                    global du projet.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="bento-card">
-                    <h3 class="text-xl font-semibold text-white mb-6 text-center">Analyse Comparative des Capacités</h3>
-                    <div class="chart-container">
-                        <canvas id="codingRadarChart"></canvas>
-                    </div>
-                    <p class="mt-6 text-sm text-slate-400 text-center">
-                        Ce graphique radar démontre la supériorité de l'approche "Agent Coding" (basée sur des workflows
-                        et skills) face au "Vibe Coding" (prompts itératifs basiques), particulièrement en termes de
-                        rétention de contexte et d'intégration d'outils.
+            <div
+                class="mb-12 border-b border-white/10 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Développement : <span
+                            class="text-cyan-400">Agent Coding</span></h2>
+                    <p class="text-slate-400 text-lg max-w-3xl leading-relaxed">
+                        L'automatisation de la création de code bascule du "vibe coding" au contexte d'agent coding via
+                        des IDE (Antigravity, Cursor) ou des terminaux (Claude Code, Gemini CLI). L'IA est
+                        contextualisée, a les outils, et devient <strong>300x plus performante</strong>.
                     </p>
                 </div>
+                <div class="p-4 bg-red-950/30 border border-red-500/40 rounded-xl max-w-sm">
+                    <h4 class="font-bold text-red-400 mb-1 flex items-center gap-2"><span class="text-xl">⚠️</span>
+                        OpenClaw</h4>
+                    <p class="text-xs text-slate-300">Avancée majeure récemment sortie. Mise en garde stricte sur la
+                        sécurité d'implémentation de ce dernier.</p>
+                </div>
+            </div>
 
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
                 <div class="space-y-6">
-                    <div class="p-6 bg-cyan-900/20 border border-cyan-500/30 rounded-xl">
-                        <h4 class="text-lg font-bold text-cyan-400 mb-2">Le concept du "Lost in the middle"</h4>
-                        <p class="text-sm text-slate-300">
-                            Dans de vastes fenêtres de contexte, les modèles IA ont tendance à prioriser les
-                            informations situées au début et à la fin du prompt, négligeant le milieu. L'utilisation
-                            d'agents spécialisés par tâche résout ce problème en segmentant l'information.
+                    <h3 class="text-2xl font-semibold text-white">Création de Skills & Workflows</h3>
+                    <p class="text-slate-400 text-sm">Donner un plan d'étape à suivre selon certains contextes en
+                        combinant des compétences (Skills) précises :</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="bg-zinc-900 border border-zinc-700 px-3 py-1 rounded text-cyan-300 text-sm">debugger</span>
+                        <span
+                            class="bg-zinc-900 border border-zinc-700 px-3 py-1 rounded text-cyan-300 text-sm">software
+                            concepter</span>
+                        <span
+                            class="bg-zinc-900 border border-zinc-700 px-3 py-1 rounded text-cyan-300 text-sm">frontend
+                            developper</span>
+                        <span class="bg-zinc-900 border border-zinc-700 px-3 py-1 rounded text-cyan-300 text-sm">backend
+                            developper</span>
+                        <span class="bg-zinc-900 border border-zinc-700 px-3 py-1 rounded text-cyan-300 text-sm">ux/ui
+                            designer</span>
+                        <span class="bg-zinc-900 border border-zinc-700 px-3 py-1 rounded text-cyan-300 text-sm">code
+                            reviewer</span>
+                    </div>
+
+                    <div class="bg-cyan-950/20 border border-cyan-500/30 p-4 rounded-xl mt-4">
+                        <h4 class="font-bold text-cyan-400 mb-3 text-sm">Exemples de Workflows combinés :</h4>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-black/40 rounded border border-white/5">
+                                <strong class="text-white block mb-1">new integration</strong>
+                                <span class="text-xs text-slate-300">Basé sur UX/UI designer + frontend developper. Plan
+                                    d'étapes pour intégrer au mieux une nouvelle feature.</span>
+                            </div>
+                            <div class="p-3 bg-black/40 rounded border border-white/5">
+                                <strong class="text-white block mb-1">new-feature</strong>
+                                <span class="text-xs text-slate-300">Basé sur software concepter, backend, frontend,
+                                    code reviewer. Workflow étape par étape pour l'implémentation.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://skills.sh/" target="_blank"
+                        class="link-badge border-cyan-500/50 text-cyan-300 bg-cyan-950/50 mt-2">
+                        🔗 skills.sh (Site de référence pour avoir des skills)
+                    </a>
+                </div>
+
+                <div class="bento-card">
+                    <h3 class="text-xl font-semibold text-white mb-6 text-center">Vibe Coding vs Agent Coding</h3>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="codingRadarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card bg-gradient-to-br from-zinc-900 to-cyan-950/30 border-cyan-500/20">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                        <span class="text-2xl">💻</span> CLI : Claude Code & Gemini CLI
+                    </h3>
+                    <a href="https://www.youtube.com/watch?v=lgg8MgEFVss" target="_blank"
+                        class="link-badge border-cyan-500/50 text-cyan-300 bg-cyan-950/50">
+                        ▶️ Masterclass Vidéo (4h)
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <h4 class="font-bold text-cyan-400 mb-1 text-sm">Hooks</h4>
+                        <p class="text-xs text-slate-300">Événement déclenché (envoyer un mail ou mettre un son quand
+                            l'IA a terminé).</p>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <h4 class="font-bold text-cyan-400 mb-1 text-sm">MCP</h4>
+                        <p class="text-xs text-slate-300">Possibilité pour l'IA de communiquer avec des outils externes.
                         </p>
                     </div>
-                    <div class="p-6 bg-violet-900/20 border border-violet-500/30 rounded-xl">
-                        <h4 class="text-lg font-bold text-violet-400 mb-2">Les Gems & Hooks</h4>
-                        <p class="text-sm text-slate-300">
-                            La création d'IA contextualisées (Gems) avec accès persistant à des bases de données Drive,
-                            couplée à des "Hooks" (déclencheurs d'événements locaux, ex: notification de fin de tâche),
-                            transforme l'IA en un collaborateur technique intégré.
-                        </p>
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <h4 class="font-bold text-cyan-400 mb-1 text-sm">Subagents</h4>
+                        <p class="text-xs text-slate-300">Appel de sous-agents pour optimiser temps, contexte et
+                            performances.</p>
                     </div>
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <h4 class="font-bold text-cyan-400 mb-1 text-sm">Agent teams</h4>
+                        <p class="text-xs text-slate-300">Faire fonctionner plusieurs agents dans une même team (en
+                            beta).</p>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <h4 class="font-bold text-cyan-400 mb-1 text-sm">Work tree</h4>
+                        <p class="text-xs text-slate-300">Faire travailler plusieurs IA en même temps sur différentes
+                            branches.</p>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <h4 class="font-bold text-cyan-400 mb-1 text-sm">System prompt</h4>
+                        <p class="text-xs text-slate-300">Englobe votre prompt de base pour guider l'IA globalement.</p>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 bg-red-950/20 border border-red-500/30 rounded text-xs text-slate-300">
+                    <strong class="text-red-400">Concept du Lost in the middle :</strong> L'IA prend plus en compte le
+                    début et la fin du contexte envoyé, le milieu est moins pris en compte.
                 </div>
             </div>
         </section>
 
-        <section id="openclaw" class="scroll-mt-24">
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Le Phénomène <span
-                        class="text-violet-400">OpenClaw</span></h2>
+        <section id="gems" class="scroll-mt-24">
+            <div class="mb-12 border-b border-white/10 pb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Marketing, Analyse & <span
+                        class="text-violet-400">Gems IA</span></h2>
                 <p class="text-slate-400 text-lg max-w-3xl leading-relaxed">
-                    La véritable rupture architecturale réside dans le passage d'une IA réactive (qui attend vos
-                    prompts) à une IA proactive. OpenClaw est un runtime auto-hébergé fonctionnant en arrière-plan. Via
-                    un système de "Heartbeat", l'agent vérifie vos données et peut initier des conversations via
-                    WhatsApp ou Telegram pour vous alerter. C'est l'avènement du collaborateur virtuel rentable.
+                    Dans le cas de Gemini, en plus de la base, deux fonctionnalités super importantes : le <strong>Deep
+                        Research</strong> pour les benchmarks, et le <strong>Gem (IA contextualisée)</strong>.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bento-card lg:col-span-1 flex flex-col justify-center">
-                    <h3 class="text-xl font-semibold text-white mb-6 text-center">Répartition des Tâches : Swarm IA</h3>
-                    <div class="chart-container" style="height: 250px;">
-                        <canvas id="swarmDoughnutChart"></canvas>
-                    </div>
-                    <p class="mt-6 text-sm text-slate-400 text-center">
-                        Illustration de la composition typique d'une équipe "Swarm" d'agents OpenClaw. Les agents
-                        communiquent entre eux pour concevoir, coder et tester sans intervention humaine.
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-8">
+                <div class="bento-card border-violet-500/30 bg-violet-950/10">
+                    <h3 class="text-xl font-bold text-violet-300 mb-3">La puissance des Gems</h3>
+                    <p class="text-sm text-slate-300 mb-4">
+                        On leur donne un system prompt + accès à des fichiers (folders d'un drive). Cela évite de
+                        redonner le contexte à chaque nouvelle discussion. L'IA a le contexte, le plan d'action, ce qui
+                        change radicalement le résultat.
                     </p>
+                    <div class="space-y-2">
+                        <strong class="text-white text-sm">Exemples d'utilisation :</strong>
+                        <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">
+                            <li>Développement de plugins spécifiques.</li>
+                            <li>Écrire des scripts de vidéos qui fonctionnent (TikTok, Instagram).</li>
+                            <li>Faire des recherches sur un sujet précis en mode OSINT.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="bento-card">
-                        <div class="text-2xl mb-3">🏢</div>
-                        <h4 class="text-lg font-bold text-white mb-2">Remplacement de SaaS</h4>
-                        <p class="text-sm text-slate-400">
-                            Déployé sur un VPS à 5$/mois, OpenClaw remplace des dizaines d'outils en lisant les emails,
-                            extrayant les données et mettant à jour les CRMs automatiquement.
-                        </p>
-                    </div>
-                    <div class="bento-card">
-                        <div class="text-2xl mb-3">💰</div>
-                        <h4 class="text-lg font-bold text-white mb-2">ClawWork (Rentabilité)</h4>
-                        <p class="text-sm text-slate-400">
-                            Un agent reçoit un budget token et doit exécuter des tâches (scraping, support) générant
-                            plus de valeur qu'il n'en dépense, agissant comme un centre de profit autonome.
-                        </p>
-                    </div>
-                    <div class="bento-card">
-                        <div class="text-2xl mb-3">🔗</div>
-                        <h4 class="text-lg font-bold text-white mb-2">Workflows Dynamiques</h4>
-                        <p class="text-sm text-slate-400">
-                            L'IA peut concevoir, tester et déployer seule ses propres automatisations dans des outils
-                            comme n8n suite à une simple demande vocale sur Telegram.
-                        </p>
-                    </div>
-                    <div class="bento-card border-red-500/30 bg-red-950/20">
-                        <div class="text-2xl mb-3 text-red-400">⚠️</div>
-                        <h4 class="text-lg font-bold text-red-400 mb-2">Sécurité & Sandboxing</h4>
-                        <p class="text-sm text-slate-400">
-                            Avec un accès système complet, l'isolation Docker est vitale. Le registre "ClawHub" intègre
-                            des analyses VirusTotal pour sécuriser les 13 000+ skills disponibles.
-                        </p>
-                    </div>
+                <div class="bento-card">
+                    <h3 class="text-lg font-bold text-white mb-4">Cas Concret : Agent Plugin Figma (Astro)</h3>
+                    <div class="code-block overflow-y-auto max-h-64 custom-scrollbar text-xs text-violet-300">
+                        Instructions du Système : Expert Développeur Figma Plugin (Astro/Emailing)
+
+                        ## Rôle & Expertise
+                        Tu es un ingénieur senior spécialisé dans l'API Figma Plugin et le rendu d'emails via Astro. Ton
+                        unique but est de parser l'arbre JSON de Figma pour le convertir en composants Astro compatibles
+                        avec les contraintes strictes de l'emailing (tables, styles inline).
+
+                        ## Protocole de Démarrage (Prioritaire)
+                        SI et SEULEMENT SI l'utilisateur commence la conversation (premier message) ou dit
+                        "Salut"/"Bonjour", tu dois répondre exactement ceci :
+
+                        "Bonjour, je suis votre Expert Figma Plugin vers Astro Emailing.
+
+                        Pour commencer la conversation, tapez :
+
+                        /implement [Tâche] : Génération de code et mapping (TypeScript/Astro).
+
+                        /search [Sujet] : Analyse technique, edge cases et alternatives."
+
+                        ---
+
+                        ## Principes de Réponse (Pour la suite de la conversation)
+                        Une fois l'introduction passée, applique une concision absolue :
+                        1. Pas de politesse : Pas de "Ravi de vous aider", pas de blabla.
+                        2. Direct au but : Fournis directement le code ou l'analyse technique.
+                        3. Emailing focus : Si une propriété Figma (ex: shadow, flex complexe) casse le rendu email,
+                        signale-le brièvement.
+
+                        ## Modes de Commandes
+
+                        ### 1. /implement [Tâche]
+                        * Analyse : Décomposition technique rapide.
+                        * Code : TypeScript (API Figma) et syntaxe Astro.
+                        * Mapping : Correspondance directe entre propriétés Figma et Props Astro.
+
+                        ### 2. /search [Sujet]
+                        * Consulting : Identifie les cas d'erreur (edge cases) du parsing.
+                        * Alternatives : Propose des solutions pour le support Outlook/Gmail.
+                        * Questions : Pose uniquement des questions techniques si le besoin est ambigu.
+
+                        ## Rappels Techniques
+                        * SceneNode vers Astro.props.
+                        * Gestion de l'Auto-layout via des structures de tables (table) pour compatibilité Outlook.
+                        * Priorité à la performance du parsing récursif.</div>
                 </div>
             </div>
         </section>
 
         <section id="design" class="scroll-mt-24">
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Design AI-First & <span
-                        class="text-pink-400">Génération Vidéo</span></h2>
+            <div class="mb-12 border-b border-white/10 pb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Web Design : L'approche <span
+                        class="text-pink-400">Agent & JSON</span></h2>
                 <p class="text-slate-400 text-lg max-w-3xl leading-relaxed">
-                    Le paradigme de la création visuelle mute. L'IA n'est plus une fonctionnalité, c'est le moteur
-                    central. Des outils comme Stitch génèrent des Single Page Applications entières en React/Tailwind
-                    via JSON Prompting. Krea et Loveart redéfinissent la direction artistique en temps réel. Côté vidéo,
-                    l'automatisation intégrale des campagnes (Ads, UGC) est désormais une réalité opérationnelle.
+                    Les outils comme Stitch, Figma Make, ou UX Pilot ont vraiment bien avancé. Stitch donne accès au
+                    modèle pro, permet des refontes, la génération d'images avec Nano Banana Pro 2, des variants, et
+                    l'export Figma.
                 </p>
             </div>
 
-            <div class="bento-card mb-12">
-                <h3 class="text-xl font-semibold text-white mb-6 text-center">Le "Workflow Magique" E-commerce (100% IA)
-                </h3>
-                <p class="text-sm text-slate-400 text-center mb-8 max-w-2xl mx-auto">
-                    Ce flux de processus illustre l'automatisation d'une campagne publicitaire complète à partir d'une
-                    simple image produit brute, réduisant les coûts de production à néant.
-                </p>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <a href="https://stitch.withgoogle.com/" target="_blank"
+                    class="link-badge border-pink-500/50 text-pink-300">🌐 Agent Stitch</a>
+                <a href="https://www.linkedin.com/posts/brunopeviani_managed-to-get-this-working-web-app-experiment-ugcPost-7427033293730283520-30Ed"
+                    target="_blank" class="link-badge">💼 Exemple Maquette 100% IA Stitch (LinkedIn)</a>
+                <a href="https://www.figma.com/design/M6OLilgD9ziWzF2inajX7Z/Landing-example-stitch" target="_blank"
+                    class="link-badge">🎨 Figma Aura Ring (Fait en 20min)</a>
+                <a href="https://youtu.be/I4tiecnaxzs" target="_blank" class="link-badge">▶️ En savoir plus (Vidéo
+                    1)</a>
+                <a href="https://youtu.be/jXOWrkpPF0c" target="_blank" class="link-badge">▶️ En savoir plus (Vidéo
+                    2)</a>
+                <a href="https://youtu.be/fT0gV9ZJh3Q" target="_blank" class="link-badge">▶️ En savoir plus (Vidéo
+                    3)</a>
+            </div>
 
-                <div class="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto w-full px-4">
+            <div class="bento-card">
+                <h3 class="text-xl font-bold text-white mb-4">Le Prompt Complet + JSON utilisé pour l'Aura Ring</h3>
+                <div
+                    class="bg-[#0f172a] border border-[#0284c7] p-4 rounded-lg overflow-y-auto max-h-96 custom-scrollbar text-xs text-[#38bdf8] font-mono whitespace-pre-wrap">
+                    "Tu es un Lead UI/UX Designer et un Développeur Frontend Senior réputé pour ton expertise en design
+                    haut de gamme (esthétique Apple, Nothing). Ta mission est de coder la landing page complète 'Aura
+                    Smart Ring' en React et Tailwind CSS à partir du JSON fourni. ATTENTION : Lors de tes précédentes
+                    générations, le layout était brisé avec des espaces vides géants (trous noirs) entre les sections et
+                    des problèmes de hauteur. Tu DOIS impérativement respecter ces règles d'architecture CSS pour
+                    corriger cela :
+
+                    Conteneurs et Marges (Crucial) : > * N'utilise JAMAIS de marges ou paddings verticaux extrêmes
+                    (interdiction d'utiliser py-64, mt-96, etc.).
+
+                    Utilise un rythme vertical constant pour tes sections : py-16 md:py-24.
+
+                    Enveloppe le contenu de CHAQUE section dans un conteneur centré : max-w-7xl mx-auto px-4 sm:px-6
+                    lg:px-8.
+
+                    Gestion de la Hero Section (Correction de hauteur) :
+
+                    Ne force pas h-screen si le contenu risque de déborder. Utilise plutôt min-h-[85vh] flex flex-col
+                    items-center justify-center pt-24 pour garantir que le texte et le visuel restent bien centrés et
+                    visibles dès le chargement, juste sous la navbar.
+
+                    Visuels et Placeholders 3D :
+
+                    Si tu ne peux pas rendre le modèle 3D ou une image complexe, ne laisse pas une div vide ou noire.
+                    Crée un magnifique placeholder abstrait en CSS (ex: une div circulaire avec bg-gradient-to-br
+                    from-violet-600/20 to-fuchsia-600/20 blur-2xl rounded-full aspect-square).
+
+                    Bento Grid (Section 04) :
+
+                    Utilise une grille stricte : grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6. Assure-toi que
+                    les cartes remplissent bien l'espace avec h-full flex flex-col.
+
+                    Esthétique Globale (Design System) :
+
+                    Fond principal : bg-[#050505].
+
+                    Implémente le Glassmorphism sur les cartes et la navbar avec bg-[#121212]/60 backdrop-blur-md border
+                    border-white/5. Analyse le JSON de la version 'Ultimate' et génère un code React/Tailwind robuste,
+                    propre, et sans aucun espace vide démesuré. Le flux de lecture doit être naturel."
+
+                    { "project": { "name": "Aura Smart Ring", "type": "Full-Funnel Landing Page", "industry": "Consumer
+                    Tech / AI Health", "target_audience": "Cadres dirigeants, entrepreneurs, professionnels de la tech,
+                    biohackers" }, "design_system": { "theme": "Dark Mode natif avec accents lumineux", "colors": {
+                    "background": "#050505", "surface": "#121212", "surface_elevated": "#1E1E1E", "primary": "#E2E8F0",
+                    "secondary": "#94A3B8", "accent": "#8B5CF6", "gradient_text": "linear-gradient(to right, #8B5CF6,
+                    #3B82F6, #2DD4BF)" }, "typography": { "headings": "Inter Tight, sans-serif (Bold, tracking
+                    -0.02em)", "body": "Inter, sans-serif (Regular, line-height 1.6)", "mono": "JetBrains Mono (pour les
+                    data et specs techniques)" }, "ui_trends": [ "Glassmorphism poussé (backdrop-blur-md,
+                    bg-opacity-10)", "Bento Grid complexe (cartes de tailles variables)", "Bordures radiantes subtiles
+                    (1px solid rgba(255,255,255,0.08))", "Scroll-jacking léger pour la section 3D", "Typographie fluide
+                    (clamp)" ] }, "layout_architecture": { "navigation": { "style": "Floating pill navbar, glass effect,
+                    caché au scroll down, visible au scroll up", "links": ["Vision", "Technologie", "Application",
+                    "Témoignages", "FAQ"], "cta": "Précommander" }, "sections": [ { "id": "01_hero", "layout":
+                    "Fullscreen height, text centré en haut, immense visuel 3D au centre", "copy": { "badge": "✨
+                    Propulsé par Google Gemini AI", "h1": "Maîtrisez votre esprit. Domptez votre journée.", "subtitle":
+                    "La première bague biométrique qui fusionne neurosciences et intelligence artificielle pour
+                    optimiser votre concentration, gérer votre stress et sublimer votre sommeil.", "primary_cta":
+                    "Réserver l'Édition Fondateur", "secondary_cta": "Découvrir la science" }, "visual": "Rendu 3D
+                    photoréaliste de la bague en lévitation, particules lumineuses autour symbolisant les flux de
+                    données." }, { "id": "04_features_bento", "layout": "Bento Grid asymétrique (4x3 sur desktop, stack
+                    sur mobile)", "copy": { "h2": "Une intelligence invisible. Des métriques implacables.", "subtitle":
+                    "Six capteurs de grade médical enfermés dans 2 millimètres de titane." }, "cards": [ { "size":
+                    "col-span-2 row-span-2", "title": "Analyse du rythme circadien & Focus", "description": "L'IA Aura
+                    cartographie vos pics d'énergie et synchronise votre agenda pour le Deep Work.", "visual_type":
+                    "Heatmap chart" }, { "size": "col-span-1 row-span-1", "title": "VRC (Variabilité Fréquence
+                    Cardiaque)", "description": "Mesure précise de votre récupération nerveuse.", "visual_type": "Live
+                    pulse animation" } ] } ] }, "technical_directives": { "framework": "React 18 / Next.js 14 (App
+                    Router)", "styling": "Tailwind CSS v3.4", "animations": "Framer Motion (useScroll, useTransform pour
+                    les effets parallax)" } }</div>
+            </div>
+        </section>
+
+        <section id="video" class="scroll-mt-24">
+            <div class="mb-12 border-b border-white/10 pb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Vidéo, Motion & <span
+                        class="text-rose-400">Automatisation Ads</span></h2>
+                <p class="text-slate-400 text-lg max-w-3xl leading-relaxed">
+                    Façon de créer des vidéos très boostée pour paid ads et organic content. On ne parle plus de prompt
+                    basique, mais d'automatisation entière de campagnes (UGC, Ads) générant un <strong>ROAS valide 100%
+                        IA</strong> (gourmand en finance de tokens IA).
+                </p>
+            </div>
+
+            <div class="bento-card mb-12 border-rose-500/30">
+                <h3 class="text-xl font-semibold text-white mb-6 text-center">Automatisation de Campagnes (Exemple
+                    concret)</h3>
+                <div class="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto w-full px-4 mb-6">
                     <div class="flow-box">
                         <div class="text-3xl mb-2">📸</div>
-                        Photo Produit Brute
+                        Image Produit Brute
                     </div>
                     <div class="flow-arrow">➔</div>
                     <div class="flow-box">
                         <div class="text-3xl mb-2">✨</div>
-                        Génération Studio IA
-                    </div>
-                    <div class="flow-arrow">➔</div>
-                    <div class="flow-box">
-                        <div class="text-3xl mb-2">🧍</div>
-                        Intégration Mannequin
+                        Photos Studio / Modèles
                     </div>
                     <div class="flow-arrow">➔</div>
                     <div class="flow-box">
                         <div class="text-3xl mb-2">🎬</div>
-                        Génération Vidéo UGC
+                        Génération UGC de A à Z
                     </div>
                     <div class="flow-arrow">➔</div>
-                    <div class="flow-box border-pink-500 bg-gradient-to-br from-pink-900/50 to-violet-900/50">
+                    <div class="flow-box border-rose-500 bg-gradient-to-br from-rose-900/50 to-violet-900/50">
                         <div class="text-3xl mb-2">📱</div>
                         Export Stories & Posts
                     </div>
                 </div>
+                <div class="flex flex-wrap justify-center gap-3 pt-4 border-t border-white/10">
+                    <a href="https://www.instagram.com/reel/DUYo7tQCNqU/" target="_blank" class="link-badge">📱 Regarder
+                        l'exemple vidéo du workflow (Insta)</a>
+                    <a href="https://www.instagram.com/slowdoown" target="_blank" class="link-badge">👤 @slowdoown</a>
+                    <a href="https://www.instagram.com/higgsfield.ai" target="_blank" class="link-badge">👤
+                        @higgsfield.ai</a>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div>
-                        <h4 class="text-xl font-bold text-white flex items-center gap-2">
-                            <span class="text-pink-400">■</span> Design & UI
-                        </h4>
-                        <ul class="mt-4 space-y-3 text-slate-300">
-                            <li><strong class="text-white">Stitch (Google) :</strong> Génération de maquettes et de code
-                                React/Tailwind robustes via JSON.</li>
-                            <li><strong class="text-white">Krea.ai :</strong> Génération en temps réel couplée à un
-                                upscaling injectant des micro-détails ultra-réalistes.</li>
-                            <li><strong class="text-white">Loveart :</strong> Outil de pré-production idéal pour la
-                                conception de moodboards ciblés.</li>
-                        </ul>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6">
+                    <div class="bg-zinc-900 p-5 rounded-xl border border-rose-500/30">
+                        <h4 class="font-bold text-white mb-3 text-lg flex items-center gap-2">🎬 Outils de Génération
+                            Vidéo & Workflows</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://higgsfield.ai/" target="_blank" class="link-badge text-rose-300">Higgsfield
+                                (Le plus connu)</a>
+                            <a href="https://fr.freepik.com/" target="_blank"
+                                class="link-badge text-rose-300">Freepik</a>
+                            <a href="https://app.tapnow.ai/" target="_blank" class="link-badge text-rose-300">Tapnow</a>
+                            <a href="https://www.weavy.ai/" target="_blank" class="link-badge text-rose-300">Weavy
+                                (Racheté par Figma)</a>
+                            <a href="https://www.imagine.art/" target="_blank"
+                                class="link-badge text-rose-300">Imagine.art</a>
+                            <a href="https://invideo.io/make/ai-video-generator/" target="_blank"
+                                class="link-badge text-rose-300">Invideo</a>
+                            <a href="https://www.comfy.org/" target="_blank"
+                                class="link-badge text-rose-300 border-rose-500">ComfyUI (Open Source)</a>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-white flex items-center gap-2">
-                            <span class="text-cyan-400">■</span> Motion & Vidéo Cinématique
-                        </h4>
-                        <ul class="mt-4 space-y-3 text-slate-300">
-                            <li><strong class="text-white">Nano Banana Pro 2 :</strong> La référence absolue actuelle
-                                pour la génération d'images haute fidélité.</li>
-                            <li><strong class="text-white">Higgsfield & Anthropic :</strong> Pionniers du motion design
-                                interactif et de l'automatisation vidéo.</li>
-                            <li><strong class="text-white">Modèles Phares :</strong> Seedance 2.0 et Kiling AI 3.0 pour
-                                des rendus texturés de qualité cinématographique.</li>
-                        </ul>
+
+                    <div class="bg-zinc-900 p-5 rounded-xl border border-cyan-500/30">
+                        <h4 class="font-bold text-white mb-2 text-lg">📱 Marketing Canva-like : Pomelli</h4>
+                        <p class="text-xs text-slate-300 mb-3">Générez des stories, photos produits depuis votre site
+                            web. <em>(Pour l'instant, nécessite un VPN car pas encore en France)</em>.</p>
+                        <a href="https://labs.google.com/pomelli/about/" target="_blank"
+                            class="link-badge text-cyan-300">Découvrir Pomelli</a>
+                    </div>
+
+                    <div class="bg-zinc-900 p-5 rounded-xl border border-violet-500/30">
+                        <h4 class="font-bold text-white mb-2 text-lg">✨ Motion Design Interactif</h4>
+                        <p class="text-xs text-slate-300 mb-3">Higgsfield AI (associé à Anthropic) génère des motions
+                            design interactifs très performants.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://higgsfield.ai/ai-motion-design" target="_blank"
+                                class="link-badge text-violet-300">Site Higgsfield Motion</a>
+                            <a href="https://static.higgsfield.ai/motion/hero-mini.mp4" target="_blank"
+                                class="link-badge text-violet-300">▶️ Teaser MP4</a>
+                            <a href="https://youtu.be/sCc7O9K92Mg" target="_blank" class="link-badge text-violet-300">▶️
+                                Vidéo Démo Motion Design</a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="bento-card">
-                    <h3 class="text-xl font-semibold text-white mb-6 text-center">Indice de Performance & Qualité de
-                        Rendu</h3>
-                    <div class="chart-container">
+                    <h3 class="text-xl font-semibold text-white mb-6 text-center">Les Modèles Visuels de Pointe</h3>
+                    <div class="chart-container" style="height: 300px;">
                         <canvas id="modelsBarChart"></canvas>
                     </div>
-                    <p class="mt-6 text-sm text-slate-400 text-center">
-                        Classement indicatif des modèles IA visuels actuels basé sur la fidélité de restitution, la
-                        cohérence temporelle (pour la vidéo) et la résolution des micro-détails.
+                    <p class="text-xs text-center text-slate-400 mt-4">Au niveau génération d'image, on ne parle que
+                        d'un seul : <strong>Nano Banana Pro 2</strong>. Pour la vidéo, <strong>Seedance 2.0</strong> et
+                        <strong>Kiling AI 3.0</strong> sont les plus à la pointe.
                     </p>
                 </div>
             </div>
@@ -347,7 +576,8 @@
     </main>
 
     <footer class="mt-32 border-t border-white/10 bg-zinc-950/50 py-12 text-center text-slate-500 text-sm">
-        <p>Infographie générée dynamiquement. Données basées sur les benchmarks technologiques IA les plus récents.</p>
+        <p>Document basé sur les benchmarks partagés. Compilant l'intégralité des outils, workflows, prompts système et
+            méthodes d'Agent Coding.</p>
     </footer>
 
     <script>
@@ -397,7 +627,7 @@
         };
 
         const ctxRadar = document.getElementById('codingRadarChart').getContext('2d');
-        const labelsRadarRaw = ['Rétention de Contexte', 'Intégration d\'Outils', 'Niveau d\'Autonomie', 'Qualité de Sortie', 'Vitesse d\'Exécution'];
+        const labelsRadarRaw = ['Rétention Contexte', 'Intégration Outils', 'Autonomie Subagents', 'Performance Demandée', 'Guidage (Skills)'];
 
         new Chart(ctxRadar, {
             type: 'radar',
@@ -405,16 +635,16 @@
                 labels: labelsRadarRaw.map(wrapLabel),
                 datasets: [
                     {
-                        label: 'Vibe Coding (Prompt Classique)',
-                        data: [35, 20, 10, 55, 60],
+                        label: 'Vibe Coding',
+                        data: [35, 20, 10, 40, 20],
                         backgroundColor: 'rgba(236, 72, 153, 0.2)',
                         borderColor: 'rgba(236, 72, 153, 1)',
                         pointBackgroundColor: 'rgba(236, 72, 153, 1)',
                         borderWidth: 2
                     },
                     {
-                        label: 'Agent Coding (Workflows & Skills)',
-                        data: [95, 90, 85, 92, 88],
+                        label: 'Agent Coding',
+                        data: [95, 90, 85, 98, 95],
                         backgroundColor: 'rgba(6, 182, 212, 0.3)',
                         borderColor: 'rgba(6, 182, 212, 1)',
                         pointBackgroundColor: 'rgba(6, 182, 212, 1)',
@@ -429,7 +659,7 @@
                     r: {
                         angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
                         grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                        pointLabels: { color: '#cbd5e1', font: { size: 12 } },
+                        pointLabels: { color: '#cbd5e1', font: { size: 11 } },
                         ticks: { display: false, min: 0, max: 100 }
                     }
                 },
@@ -437,55 +667,20 @@
             }
         });
 
-        const ctxDoughnut = document.getElementById('swarmDoughnutChart').getContext('2d');
-        const labelsDoughnutRaw = ['Développeur (Génération Code)', 'Analyste (Spécifications)', 'QA (Tests & Débogage)', 'Project Manager (Coordination)'];
-
-        new Chart(ctxDoughnut, {
-            type: 'doughnut',
-            data: {
-                labels: labelsDoughnutRaw.map(wrapLabel),
-                datasets: [{
-                    data: [45, 25, 20, 10],
-                    backgroundColor: [
-                        'rgba(139, 92, 246, 0.8)',
-                        'rgba(6, 182, 212, 0.8)',
-                        'rgba(236, 72, 153, 0.8)',
-                        'rgba(16, 185, 129, 0.8)'
-                    ],
-                    borderColor: 'rgba(24, 24, 27, 1)',
-                    borderWidth: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
-                plugins: {
-                    ...commonTooltipConfig,
-                    legend: {
-                        position: 'right',
-                        labels: { color: '#cbd5e1', font: { size: 11 } }
-                    }
-                }
-            }
-        });
-
         const ctxBar = document.getElementById('modelsBarChart').getContext('2d');
-        const labelsBarRaw = ['Nano Banana Pro 2', 'Seedance 2.0 (Vidéo)', 'Kiling AI 3.0 (Vidéo)', 'Krea (Temps Réel)', 'Loveart (Concept)'];
+        const labelsBarRaw = ['Nano Banana Pro 2 (Image)', 'Seedance 2.0 (Vidéo)', 'Kiling AI 3.0 (Vidéo)'];
 
         new Chart(ctxBar, {
             type: 'bar',
             data: {
                 labels: labelsBarRaw.map(wrapLabel),
                 datasets: [{
-                    label: 'Score Qualité / Rendu (%)',
-                    data: [98, 92, 90, 88, 85],
+                    label: 'Niveau d\'adoption / Pointe',
+                    data: [100, 95, 90],
                     backgroundColor: [
                         'rgba(234, 179, 8, 0.8)',
-                        'rgba(139, 92, 246, 0.8)',
-                        'rgba(139, 92, 246, 0.6)',
-                        'rgba(236, 72, 153, 0.8)',
-                        'rgba(236, 72, 153, 0.6)'
+                        'rgba(244, 63, 94, 0.8)',
+                        'rgba(168, 85, 247, 0.8)'
                     ],
                     borderRadius: 6
                 }]
@@ -493,16 +688,15 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                indexAxis: 'y',
+                indexAxis: 'x',
                 scales: {
                     x: {
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                        ticks: { color: '#94a3b8' },
-                        max: 100
+                        grid: { display: false },
+                        ticks: { color: '#cbd5e1', font: { weight: 'bold' } }
                     },
                     y: {
-                        grid: { display: false },
-                        ticks: { color: '#e2e8f0', font: { weight: 'bold' } }
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { display: false, max: 100 }
                     }
                 },
                 plugins: {
